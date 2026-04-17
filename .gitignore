@@ -1,4 +1,7 @@
 data/
+data/manifests/
+data/LibriSpeech/
+data/musan/
 outputs/
 CLAUDE.md
 demo.ipynb
