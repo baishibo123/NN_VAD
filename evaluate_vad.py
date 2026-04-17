@@ -260,9 +260,22 @@ def main():
         examples = build_fixed_examples(test_ds, snr_values)
         en_counts = {"tp": 0, "tn": 0, "fp": 0, "fn": 0}
 
-        dl_start = time.perf_counter()
+        # Counts: batched inference (fast, accurate)
         dl_counts = _run_dnn_batch(model, examples, best_dnn_threshold, device)
-        dl_time = time.perf_counter() - dl_start
+
+        # Timing: single-example latency × N — fair comparison with energy VAD.
+        # GPU ops are async so cuda.synchronize() is required before stopping the clock.
+        _probe = examples[0]["feats"].unsqueeze(0).to(device)
+        with torch.no_grad():  # warm-up
+            _ = model(_probe)
+        if device == "cuda":
+            torch.cuda.synchronize()
+        t0 = time.perf_counter()
+        with torch.no_grad():
+            _ = model(_probe)
+        if device == "cuda":
+            torch.cuda.synchronize()
+        dl_time = (time.perf_counter() - t0) * len(examples)
 
         en_start = time.perf_counter()
         for ex in examples:

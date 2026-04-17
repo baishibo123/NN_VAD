@@ -1,0 +1,150 @@
+(.venv) PS E:\NN_VAD> python evaluate_vad.py --val_manifest 'data/manifests/val_manifest.jsonl' --test_manifest 'data/manifests/test_manifest.jsonl' --model_path 'outputs/vad_model.pt'
+[evaluate] device = cuda
+[evaluate] GPU: NVIDIA GeForce RTX 4090
+Selected energy threshold on validation set: 0.000010
+Validation F1 at selected energy threshold:  0.8500
+Selected DNN threshold on validation set:  0.5667
+Validation F1 at selected DNN threshold:   0.9827
+DNN threshold sweep plot saved to outputs/dnn_threshold_sweep.png
+
+Deep-learning VAD [clean_noise_only]
+precision: 0.0000
+recall: 0.0000
+f1: 0.0000
+fpr: 0.5710
+fnr: 0.0000
+false_alarm_rate: 0.5710
+miss_rate: 0.0000
+tp: 0
+tn: 222527
+fp: 296233
+fn: 0
+inference_time_sec: 0.1941
+
+Energy VAD [clean_noise_only]
+precision: 0.0000
+recall: 0.0000
+f1: 0.0000
+fpr: 0.8250
+fnr: 0.0000
+false_alarm_rate: 0.8250
+miss_rate: 0.0000
+tp: 0
+tn: 90805
+fp: 427955
+fn: 0
+inference_time_sec: 1.1944
+
+Deep-learning VAD [snr_20db]
+precision: 0.9990
+recall: 0.9978
+f1: 0.9984
+fpr: 0.9941
+fnr: 0.0022
+false_alarm_rate: 0.9941
+miss_rate: 0.0022
+tp: 517113
+tn: 3
+fp: 502
+fn: 1142
+inference_time_sec: 0.2007
+
+Energy VAD [snr_20db]
+precision: 0.9996
+recall: 0.9051
+f1: 0.9500
+fpr: 0.4178
+fnr: 0.0949
+false_alarm_rate: 0.4178
+miss_rate: 0.0949
+tp: 469056
+tn: 294
+fp: 211
+fn: 49199
+inference_time_sec: 1.1813
+
+Deep-learning VAD [snr_10db]
+precision: 0.9990
+recall: 0.9928
+f1: 0.9959
+fpr: 0.9743
+fnr: 0.0072
+false_alarm_rate: 0.9743
+miss_rate: 0.0072
+tp: 514540
+tn: 13
+fp: 493
+fn: 3714
+inference_time_sec: 0.1935
+
+Energy VAD [snr_10db]
+precision: 0.9993
+recall: 0.9474
+f1: 0.9727
+fpr: 0.6344
+fnr: 0.0526
+false_alarm_rate: 0.6344
+miss_rate: 0.0526
+tp: 490981
+tn: 185
+fp: 321
+fn: 27273
+inference_time_sec: 1.1728
+
+Deep-learning VAD [snr_0db]
+precision: 0.9990
+recall: 0.9769
+f1: 0.9879
+fpr: 0.9744
+fnr: 0.0231
+false_alarm_rate: 0.9744
+miss_rate: 0.0231
+tp: 506300
+tn: 13
+fp: 494
+fn: 11953
+inference_time_sec: 0.2032
+
+Energy VAD [snr_0db]
+precision: 0.9991
+recall: 0.9726
+f1: 0.9857
+fpr: 0.8817
+fnr: 0.0274
+false_alarm_rate: 0.8817
+miss_rate: 0.0274
+tp: 504057
+tn: 60
+fp: 447
+fn: 14196
+inference_time_sec: 1.2574
+
+Deep-learning VAD [all_conditions]
+precision: 0.8364
+recall: 0.9901
+f1: 0.9068
+fpr: 0.5786
+fnr: 0.0099
+false_alarm_rate: 0.5786
+miss_rate: 0.0099
+tp: 1539401
+tn: 219264
+fp: 301013
+fn: 15362
+inference_time_sec: 0.6607
+
+Energy VAD [all_conditions]
+precision: 0.7727
+recall: 0.9412
+f1: 0.8487
+fpr: 0.8275
+fnr: 0.0588
+false_alarm_rate: 0.8275
+miss_rate: 0.0588
+tp: 1463362
+tn: 89764
+fp: 430513
+fn: 91401
+inference_time_sec: 4.6856
+
+Comparison plot saved to outputs/comparison_plot.png
