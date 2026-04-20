@@ -16,13 +16,6 @@ class SmallCRNNVAD(nn.Module):
     - Added a third Conv1d block (deeper front-end, closer to SpeechBrain CRDNN)
     - Increased hidden_size default to 128 for better capacity
     - BatchNorm after each ReLU for more stable training
-
-    Why not just use SpeechBrain's pretrained CRDNN?
-    SpeechBrain's VAD is trained on real-world data with a different label schema.
-    Our from-scratch model lets us directly measure whether our synthetic data
-    pipeline choices (SNR mixing, balanced sampling, frame-label generation) work —
-    something a pretrained model would obscure.  The architectural improvements here
-    close the design gap while keeping full experimental control.
     """
 
     def __init__(self, n_mels: int = 40, hidden_size: int = 128, dropout: float = 0.2):
